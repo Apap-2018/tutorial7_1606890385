@@ -41,13 +41,13 @@ public class DealerController {
 		return restTemplate.getForEntity(path, String.class).getBody();
 	}
 	
-	@GetMapping(value = "/full/{dealerId}")
-	private DealerDetail postStatus(@PathVariable ("dealerId") long dealerId) throws Exception{
-		String path = Setting.dealerUrl + "/dealer";
-		DealerModel dealer = dealerService.getDealerDetailById(dealerId).get();
-		DealerDetail detail = restTemplate.postForObject(path, dealer, DealerDetail.class);
-		return detail;
-	}
+		@GetMapping(value = "/full/{dealerId}")
+		private DealerDetail postStatus(@PathVariable ("dealerId") long dealerId) throws Exception{
+			String path = Setting.dealerUrl + "/dealer";
+			DealerModel dealer = dealerService.getDealerDetailById(dealerId).get();
+			DealerDetail detail = restTemplate.postForObject(path, dealer, DealerDetail.class);
+			return detail;
+		}
 	@PostMapping(value="/add")
 	private DealerModel addDealerSubmit(@RequestBody DealerModel dealer) {
 		return dealerService.addDealer(dealer);
